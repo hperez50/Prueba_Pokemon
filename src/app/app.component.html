@@ -1,37 +1,15 @@
-<!-- <div>
-  <label for="pokemon-select">Select a Pokémon:</label>
-  <select id="pokemon-select">
-    <option *ngFor="let pokemon of pokemonList" [value]="pokemon.name">{{ pokemon.name.english }}</option>
-  </select>
-</div> -->
-<div>
-<ul>
-  <li *ngFor="let pokemon of pokemonList">{{ pokemon.name.english }}
-    <strong>HP:</strong> {{ pokemon.base.HP }}
-    <p *ngIf="pokemon?.base?.HP > 50"><strong>Attack:</strong> {{ pokemon.base.Attack }}</p>
-    <p *ngIf="pokemon?.base?.HP  > 100"><strong>Defense:</strong> {{ pokemon.base.Defense }}</p>
-    <strong>Sp. Attack:</strong> {{ pokemon.base['Sp. Attack'] }}
-    <strong>Sp. Defense:</strong> {{ pokemon.base['Sp. Defense'] }}
-    <strong>Speed:</strong> {{ pokemon.base.Speed }}
-  </li>
-  <!-- <li><strong>HP:</strong> {{ pokemon.base.HP }}</li> -->
-</ul>
-
-<!-- 
-<h3>Base Stats</h3>
-<ul>
-  <li><strong>HP:</strong> {{ pokemon.base.HP }}</li> -->
-  <!-- <li><strong>Attack:</strong> {{ pokemon.base.Attack }}</li>
-  <li><strong>Defense:</strong> {{ pokemon.base.Defense }}</li>
-  <li><strong>Sp. Attack:</strong> {{ pokemon.base['Sp. Attack'] }}</li>
-  <li><strong>Sp. Defense:</strong> {{ pokemon.base['Sp. Defense'] }}</li>
-  <li><strong>Speed:</strong> {{ pokemon.base.Speed }}</li> -->
-<!-- </ul>
-</div> -->
-<!-- <div *ngIf="pokemon">
-  <img [src]="pokemonImageUrl" alt="{{ pokemon.name }}" />
-  <h2>{{ pokemon.name }}</h2>
-  <p><strong>HP:</strong> {{ hp }}</p>
-  <p *ngIf="hp > 50"><strong>Attack:</strong> {{ attack }}</p>
-  <p *ngIf="hp <= 50"><strong>Defense:</strong> {{ defense }}</p>
-</div> -->
+<div style="text-align: center;">
+  <ul>
+    <li *ngFor="let pokemon of pokemonList">
+      <strong>{{ pokemon.name.english }}</strong><br>
+      <strong>HP:</strong> {{ pokemon.base.HP }}
+      <div style="text-align: center;">
+        <img [src]="baseUrl + (pokemon.name.english | lowercase) + '.jpg'" alt="{{ pokemon.name.english }}"
+          class="img-medium">
+      </div>
+      <p *ngIf="pokemon?.base?.HP > 50"><strong>Attack:</strong> {{ pokemon.base.Attack }}</p>
+      <p *ngIf="pokemon?.base?.HP <= 50"><strong>Defense:</strong> {{ pokemon.base.Defense }}</p>
+      <hr class="divider">
+    </li>
+  </ul>
+</div>

@@ -9,7 +9,6 @@ import { Pokemon } from '../models/pokemon.model';
 export class PokemonService {
 
   private apiUrl = 'https://raw.githubusercontent.com/jherr/fower-pokemon-vue/master/public/pokemon.json';
-  private link =   'https://raw.githubusercontent.com/jherr/fower-pokemon-vue/master/public/pokemon/'
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +16,4 @@ export class PokemonService {
     return this.http.get<Pokemon>(`${this.apiUrl}`);
   }
 
-  getPokemonImageUrl(name: string): string {
-    return  `${this.link}${name.toLowerCase()}.jpg`;
-  }
 }
