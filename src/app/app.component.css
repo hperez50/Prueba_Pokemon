@@ -1,0 +1,13 @@
+.img-medium {
+    width: 300px;
+    height: auto;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.divider {
+    border-bottom: 1px solid #E0E0E0;
+    margin: 8px 16px 0px 16px;
+}
