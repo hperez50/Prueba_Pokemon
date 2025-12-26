@@ -1,15 +1,23 @@
-<div style="text-align: center;">
+<div style="text-align: center">
   <ul>
     <li *ngFor="let pokemon of pokemonList">
-      <strong>{{ pokemon.name.english }}</strong><br>
+      <strong>{{ pokemon.name.english }}</strong
+      ><br />
       <strong>HP:</strong> {{ pokemon.base.HP }}
-      <div style="text-align: center;">
-        <img [src]="baseUrl + (pokemon.name.english | lowercase) + '.jpg'" alt="{{ pokemon.name.english }}"
-          class="img-medium">
+      <div style="text-align: center">
+        <img
+          [src]="baseUrl + (pokemon.name.english | lowercase) + '.jpg'"
+          alt="{{ pokemon.name.english }}"
+          class="img-medium"
+        />
       </div>
-      <p *ngIf="pokemon?.base?.HP > 50"><strong>Attack:</strong> {{ pokemon.base.Attack }}</p>
-      <p *ngIf="pokemon?.base?.HP <= 50"><strong>Defense:</strong> {{ pokemon.base.Defense }}</p>
-      <hr class="divider">
+      <p *ngIf="pokemon.base.HP > 50">
+        <strong>Attack:</strong> {{ pokemon.base.Attack }}
+      </p>
+      <p *ngIf="pokemon.base.HP <= 50">
+        <strong>Defense:</strong> {{ pokemon.base.Defense }}
+      </p>
+      <hr class="divider" />
     </li>
   </ul>
 </div>

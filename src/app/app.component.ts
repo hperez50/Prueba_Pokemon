@@ -9,17 +9,17 @@ import { Pokemon } from './models/pokemon.model';
   standalone: true,
   imports: [RouterOutlet, NgFor, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
-
 export class AppComponent implements OnInit {
-  pokemonList: Pokemon | undefined;
-  baseUrl: string = 'https://raw.githubusercontent.com/jherr/fower-pokemon-vue/master/public/pokemon/';
+  pokemonList: Pokemon[] = [];
+  baseUrl: string =
+    'https://raw.githubusercontent.com/jherr/fower-pokemon-vue/master/public/pokemon/';
 
-  constructor(private pokemonService: PokemonService) { }
+  constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
-    this.pokemonService.getPokemon().subscribe(data => {
+    this.pokemonService.getPokemon().subscribe((data) => {
       this.pokemonList = data;
     });
   }
