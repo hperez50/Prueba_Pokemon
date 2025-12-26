@@ -1,10 +1,10 @@
-<div style="text-align: center">
-  <ul>
+<div class="pokemon-container">
+  <ul class="pokemon-grid">
     <li *ngFor="let pokemon of pokemonList">
       <strong>{{ pokemon.name.english }}</strong
       ><br />
       <strong>HP:</strong> {{ pokemon.base.HP }}
-      <div style="text-align: center">
+      <div class="pokemon-image">
         <img
           [src]="baseUrl + (pokemon.name.english | lowercase) + '.jpg'"
           alt="{{ pokemon.name.english }}"
