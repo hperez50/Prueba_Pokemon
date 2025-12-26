@@ -1,23 +1,44 @@
-<div class="pokemon-container">
-  <ul class="pokemon-grid">
-    <li *ngFor="let pokemon of pokemonList">
-      <strong>{{ pokemon.name.english }}</strong
-      ><br />
-      <strong>HP:</strong> {{ pokemon.base.HP }}
-      <div class="pokemon-image">
+<div class="container py-5 pokedex-shell">
+  <div class="pokedex-hero">
+    <div>
+      <p class="pokedex-kicker mb-1">KANTO FILES</p>
+      <h1 class="pokedex-title mb-2">Pokedex</h1>
+      <p class="pokedex-subtitle mb-0">Coleccion visual con stats y tipos.</p>
+    </div>
+  </div>
+  <div class="row g-4 pokemon-grid mt-3">
+    <div
+      class="col-12 col-sm-6 col-md-4 col-lg-3"
+      *ngFor="let pokemon of pokemonList"
+    >
+      <div class="pokemon-card h-100">
         <img
+          class="pokemon-art img-medium"
           [src]="baseUrl + (pokemon.name.english | lowercase) + '.jpg'"
           alt="{{ pokemon.name.english }}"
-          class="img-medium"
         />
+        <div class="pokemon-body">
+          <div class="pokemon-name">{{ pokemon.name.english }}</div>
+          <div class="pokemon-badges">
+            <span class="pokemon-badge pokemon-badge-hp"
+              >HP {{ pokemon.base.HP }}</span
+            >
+            <span
+              class="pokemon-badge pokemon-badge-atk"
+              *ngIf="pokemon.base.HP > 50"
+            >
+              ATK {{ pokemon.base.Attack }}
+            </span>
+            <span
+              class="pokemon-badge pokemon-badge-def"
+              *ngIf="pokemon.base.HP <= 50"
+            >
+              DEF {{ pokemon.base.Defense }}
+            </span>
+          </div>
+          <div class="pokemon-types">{{ pokemon.type.join(" / ") }}</div>
+        </div>
       </div>
-      <p *ngIf="pokemon.base.HP > 50">
-        <strong>Attack:</strong> {{ pokemon.base.Attack }}
-      </p>
-      <p *ngIf="pokemon.base.HP <= 50">
-        <strong>Defense:</strong> {{ pokemon.base.Defense }}
-      </p>
-      <hr class="divider" />
-    </li>
-  </ul>
+    </div>
+  </div>
 </div>

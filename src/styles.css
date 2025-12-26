@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Grotesk:wght@400;600;700&display=swap");
+
+:root {
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  background: #f8fafc;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 20% 20%, #fef3c7 0%, transparent 50%),
+    radial-gradient(circle at 80% 0%, #dbeafe 0%, transparent 50%), #f8fafc;
+}
