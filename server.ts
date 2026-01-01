@@ -4,6 +4,8 @@ import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import bootstrap from './src/main.server';
+import swaggerUi from 'swagger-ui-express';
+import swaggerJSDoc from 'swagger-jsdoc';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -14,11 +16,50 @@ export function app(): express.Express {
 
   const commonEngine = new CommonEngine();
 
+  const swaggerDefinition = {
+    openapi: '3.0.0',
+    info: {
+      title: 'Pokemon API',
+      version: '1.0.0',
+      description: 'API for Pokemon data',
+    },
+    servers: [
+      {
+        url: 'http://localhost:4000',
+        description: 'Development server',
+      },
+    ],
+  };
+
+  const options = {
+    swaggerDefinition,
+    apis: ['./server.ts'], // files containing annotations
+  };
+
+  const specs = swaggerJSDoc(options);
+
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
+  // Swagger setup
+  server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
+
+  /**
+   * @swagger
+   * /api/pokemon:
+   *   get:
+   *     summary: Get list of Pokemon
+   *     responses:
+   *       200:
+   *         description: List of Pokemon
+   */
+  server.get('/api/pokemon', (req, res) => {
+    res.json([{ name: 'Pikachu', type: 'Electric' }]);
+  });
+
   // Serve static files from /browser
   server.get(
     '**',
